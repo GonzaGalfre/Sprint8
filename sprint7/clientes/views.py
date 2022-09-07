@@ -1,8 +1,9 @@
 from django.shortcuts import render
-from .models import Cliente
+from .models import Cliente, Sucursal
 from cuentas.models import Cuenta, Movimientos
 from tarjetas.models import Tarjeta, CardBrand
-from .serializers import ClienteSerializer, CuentaSerializer
+from prestamos.models import Prestamo
+from .serializers import ClienteSerializer, CuentaSerializer, PrestamoSerializer, SucursalSerializer
 from django.contrib.auth.decorators import login_required
 from rest_framework import viewsets, status
 from rest_framework.views import APIView
@@ -91,3 +92,32 @@ class CuentaViewSet(viewsets.mixins.ListModelMixin, viewsets.mixins.RetrieveMode
         except:
             acc = []
             return acc
+
+class PrestamoViewSet(viewsets.mixins.ListModelMixin, viewsets.mixins.RetrieveModelMixin, viewsets.GenericViewSet):
+    serializer_class = PrestamoSerializer
+    def get_queryset(self):
+        id = self.request.user.id
+        user = Cliente.objects.filter(user = id)
+        try:
+            us_id = user[0].customer_id
+            return Prestamo.objects.filter(customer_id = us_id)
+        except:
+            loans = []
+            return loans
+
+class SucursalViewSet(viewsets.ReadOnlyModelViewSet):
+    permission_classes = [IsAdminUser]
+    serializer_class = SucursalSerializer
+    def get_queryset(self):
+        id = self.kwargs['id']
+        client_list = Cliente.objects.filter(branch_id = id)
+        list = []
+        loans = Prestamo.objects.all()
+        for l in loans:
+            for c in client_list:
+                if l.customer_id == c.customer_id:
+                    list.append(l)
+        return list
+
+def inicio(request):
+    return render(request, 'clientes/inicio.html')
