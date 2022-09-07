@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'prestamos.apps.PrestamosConfig',
     'tarjetas.apps.TarjetasConfig',
     'mathfilters',
+    'rest_framework'
 ]
 
 MIDDLEWARE = [
