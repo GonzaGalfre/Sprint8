@@ -76,23 +76,12 @@
       <hr class="border-primary opacity-20" style="margin: 0px" />
     </div>
 
-    <!--Middle-->
-
-    {% comment %}
-    <div class="clientes">
-      {% block content %} {% for cliente in clientes %}
-      <p>.</p>
-      {%if inputDNI == cliente.customer_dni%}
-      <p>{{cliente.customer_dni}}</p>
-      {%endif%} {% endfor %} {% endblock %}
-    </div>
-    {% endcomment %}
 
     <div class="mid">
       <div class="container-fluid">
         <div class="row">
           <!--Backround-->
-          <div class="col-8" style="padding: 0%">
+          <div class="col-12" style="padding: 0%">
             <div class="card border-light" style="margin: 0%">
               <img src="{% static 'img/bg.jpg' %}" class="img-fluid" />
               <br />
@@ -103,92 +92,26 @@
                 <h2 class="fs-4 fw-light text-white">
                   ¡Gracias por elegirnos!
                 </h2>
-              </div>
-            </div>
-          </div>
-
-          <!--Login Menu-->
-          <div class="col-4">
-            <br />
-            <h3 class="text-center">Ingrese sus datos</h3>
-            <hr class="border-primary opacity-20" />
-            <form method="POST" style="margin: 5%">
-              <!--Receive Input-->
-              {% if form.non_field_errors %}
-                {% for error in form.non_field_errors %}
-                  <p>{{error}}</p>
-                {% endfor %}
-              {% endif %}
-              {% csrf_token %}
-              <div class="mb-3">
-                <label for="username" class="form-label">Nombre de Usuario</label>
-                <input
-                  type="text"
-                  class="form-control"
-                  id="username"
-                  name="username"
-                />
-              </div>
-
-              <div class="mb-3">
-                <label for="password" class="form-label"
-                  >Contraseña</label
-                >
-                <input
-                  type="password"
-                  class="form-control"
-                  id="password"
-                  name="password"
-                />
-              </div>
-
-              <div class="form-text text-center">
-                Nunca compartiremos tu informacion personal con nadie.
-                <a href="#">Mas informacion.</a>
-              </div>
-              <br />
-
-              <!--Other options-->
-              <div class="row">
-                <div class="col-6">
-                  <div class="mb-3 form-check">
-                    <input
-                      type="checkbox"
-                      class="form-check-input"
-                      id="rememberInput"
-                    />
-                    <label class="form-check-label" for="rememberInput"
-                      >Recordar datos</label
-                    >
-                  </div>
-                </div>
-                <div class="col-6 text-center" style="padding: 0%">
-                  <a class="fs-6" link="resetPassword" href="#"
-                    >¿Olvidaste tu contraseña?</a
+                <div class="row">
+                  <div class="col-8"></div>
+                  <div
+                    class="d-grid gap-2 col-6 d-md-block"
+                    style="margin-bottom: 5%"
                   >
-                </div>
-              </div>
-
-              <!--Buttons-->
-              <div class="row">
-                <div class="d-grid gap-2 col-6 mx-auto" style="margin-top: 5%">
-                  <button class="btn btn-primary" type="submit">
-                    Iniciar Sesion
-                  </button>
-                </div>
-                <div class="d-grid gap-2 col-6 mx-auto" style="margin-top: 5%">
-                  <button class="btn btn-primary" type="button">
-                    <a class="text-white" href="{% url 'login:signup' %}">
-                      Crear Cuenta
-                    </a>
-                    
-                  </button>
-                </div>
-              </div>
-            </form>
+                    <button class="btn btn-primary " type="submit">
+                      Iniciar Sesion
+                    </button>
+                    <button class="btn btn-primary" type="button">
+                      <a class="text-white" href="{% url 'login:signup' %}">
+                        Crear Cuenta
+                      </a>
+                    </button>
+                  </div>
+                 
           </div>
         </div>
       </div>
+
     </div>
   </body>
 </html>
