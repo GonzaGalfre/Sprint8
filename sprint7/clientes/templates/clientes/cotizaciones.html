@@ -1,0 +1,157 @@
+{% extends "Clientes/index.html" %} {% block content %} {% load static %}
+<body>
+  <!-- Front -->
+  <div id="background" class="row">
+    <!-- Izquierda -->
+
+    <div class="col-2 text-center">
+      <!-- Secciones-->
+    </div>
+
+    <!-- Centro -->
+    <div class="col-9 text-center">
+      <div class="row">
+        <div class="col-4">
+          <div class="card-body m-4">
+            <h5 class="card-title">Dolar Oficial</h5>
+            <div class="row my-3">
+              <div class="col-6">
+                <p class="card-text">Compra</p>
+                <p class="fs-3" id="oficialCompra"></p>
+              </div>
+              <div class="col-6">
+                <p class="card-text">Venta</p>
+                <p class="fs-3" id="oficialVenta"></p>
+              </div>
+            </div>
+            <div class="row my-2">
+              <p class="var">Variación del precio</p>
+              <p class="fs-3" id="oficialVar"></p>
+            </div>
+            <div class="row my-3">
+              <p class="fecha"></p>
+            </div>
+          </div>
+        </div>
+        <div class="col-4">
+          <div class="card-body m-4">
+            <h5 class="card-title">Dolar Blue</h5>
+            <div class="row my-3">
+              <div class="col-6">
+                <p class="card-text">Compra</p>
+                <p class="fs-3" id="blueCompra"></p>
+              </div>
+              <div class="col-6">
+                <p class="card-text">Venta</p>
+                <p class="fs-3" id="blueVenta"></p>
+              </div>
+            </div>
+            <div class="row my-2">
+              <p class="var">Variación del precio</p>
+              <p class="fs-3" id="blueVar"></p>
+            </div>
+            <div class="row my-3">
+              <p class="fecha"></p>
+            </div>
+          </div>
+        </div>
+        <div class="col-4">
+          <div class="card-body m-4">
+            <h5 class="card-title">Dolar Soja</h5>
+            <div class="row my-3">
+              <div class="col-6">
+                <p class="card-text">Compra</p>
+                <p class="fs-3" id="sojaCompra"></p>
+              </div>
+              <div class="col-6">
+                <p class="card-text">Venta</p>
+                <p class="fs-3" id="sojaVenta"></p>
+              </div>
+            </div>
+            <div class="row my-2">
+              <p class="var">Variación del precio</p>
+              <p class="fs-3" id="sojaVar"></p>
+            </div>
+            <div class="row my-3">
+              <p class="fecha"></p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-4">
+          <div class="card-body m-4">
+            <h5 class="card-title">Dolar Bolsa</h5>
+            <div class="row my-3">
+              <div class="col-6">
+                <p class="card-text">Compra</p>
+                <p class="fs-3" id="bolsaCompra"></p>
+              </div>
+              <div class="col-6">
+                <p class="card-text">Venta</p>
+                <p class="fs-3" id="bolsaVenta"></p>
+              </div>
+            </div>
+            <div class="row my-2">
+              <p class="var">Variación del precio</p>
+              <p class="fs-3" id="bolsaVar"></p>
+            </div>
+            <div class="row my-3">
+              <p class="fecha"></p>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-4">
+          <div class="card-body m-4">
+            <h5 class="card-title">Dolar Turista</h5>
+            <div class="row my-3">
+              <div class="col-6">
+                <p class="card-text">Compra</p>
+                <p class="fs-3" id="turistaCompra"></p>
+              </div>
+              <div class="col-6">
+                <p class="card-text">Venta</p>
+                <p class="fs-3" id="turistaVenta"></p>
+              </div>
+            </div>
+            <div class="row my-2">
+              <p class="var">Variación del precio</p>
+              <p class="fs-3" id="turistaVar"></p>
+            </div>
+            <div class="row my-3">
+              <!---->
+              <p class="fecha"></p>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-4">
+          <div class="card-body m-4">
+            <h5 class="card-title">Dolar Contado con Liqui</h5>
+            <div class="row my-3">
+              <div class="col-6">
+                <p class="card-text">Compra</p>
+                <p class="fs-3" id="CCLCompra"></p>
+              </div>
+              <div class="col-6">
+                <p class="card-text">Venta</p>
+                <p class="fs-3" id="CCLVenta"></p>
+              </div>
+            </div>
+            <div class="row my-2">
+              <p class="var">Variación del precio</p>
+              <p class="fs-3" id="CCLVar"></p>
+            </div>
+            <div class="row my-3">
+              <p class="fecha"></p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="{% static 'clientes/js/script.js' %}"></script>
+</body>
+{% endblock %}
