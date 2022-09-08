@@ -3,12 +3,13 @@ from .models import Cliente, Sucursal
 from cuentas.models import Cuenta, Movimientos
 from tarjetas.models import Tarjeta, CardBrand
 from prestamos.models import Prestamo
-from .serializers import ClienteSerializer, CuentaSerializer, PrestamoSerializer, SucursalSerializer
+from .serializers import ClienteSerializer, CuentaSerializer, PrestamoSerializer, SucursalSerializer, TarjetaSerializer, AllSucursalesSerializer
 from django.contrib.auth.decorators import login_required
 from rest_framework import viewsets, status
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework.permissions import IsAdminUser
+
 
 
 # Create your views here.
@@ -118,6 +119,34 @@ class SucursalViewSet(viewsets.ReadOnlyModelViewSet):
                 if l.customer_id == c.customer_id:
                     list.append(l)
         return list
+
+class TarjetaViewSet(viewsets.ReadOnlyModelViewSet):
+    serializer_class= TarjetaSerializer
+    permission_classes= [IsAdminUser]
+    lookup_field = 'customer_id'
+    def get_queryset(self):
+        id = self.kwargs['id']
+        return Tarjeta.objects.filter(customer_id = id)
+
+class ModifyLoansViewSet(viewsets.ModelViewSet):
+    permission_classes= [IsAdminUser]
+    serializer_class = SucursalSerializer
+    queryset = Prestamo.objects.all()
+    lookup_field = 'loan_id'
+
+    def get(self, request, format=None):
+        prestamos = Prestamo.objects.all()
+        serializer = SucursalSerializer(prestamos, many=True)
+        return Response(serializer.data, status=status.HTTP_200_OK)
+
+class PublicEndpoint(APIView):
+    permission_classes = []
+
+    def get(self, request):
+        sucursales = Sucursal.objects.all()
+        serializer = AllSucursalesSerializer(sucursales, many=True)
+        return Response(serializer.data, status=status.HTTP_200_OK)
+
 
 def inicio(request):
     return render(request, 'clientes/inicio.html')
