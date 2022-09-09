@@ -1,3 +1,4 @@
+from http import client
 from django.shortcuts import render
 from .models import Cliente, Sucursal
 from cuentas.models import Cuenta, Movimientos
@@ -17,11 +18,12 @@ from rest_framework.permissions import IsAdminUser
 @login_required(login_url='/login/login/')
 def index(request):
 
-    
-    clientdata = Cliente.objects.get(user_id = request.user.id)
+    try:
+        clientdata = Cliente.objects.get(user_id = request.user.id)
+    except:
+        clientdata = None
     try:
         accdata = Cuenta.objects.filter(customer_id = clientdata.customer_id)
-        accdatalen = len(Cuenta.objects.filter(customer_id = clientdata.customer_id))
     except:
         accdata = None
 
@@ -35,16 +37,7 @@ def index(request):
     except:
         cbdata = None
 
-    if accdatalen <= 1:
-        try:
-            transactionsdata = [Movimientos.objects.filter(account_id = accdata[0].account_id)]
-        except:
-            transactionsdata = None
-    else:
-        transactionsdata = []
-        for a in accdata:
-            i = Movimientos.objects.filter(account_id = a.account_id)
-            transactionsdata.append(i)
+    
 
 
     context = {'clientdata':clientdata, 'accdata':accdata, 'cardsdata':cardsdata, 'cbdata':cbdata}
