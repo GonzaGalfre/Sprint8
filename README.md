@@ -11,8 +11,8 @@ Instalar requirements
 
 Iniciar el servidor
 
-  -cd sprint7
-  -python manage.py runserver
+  - cd sprint7
+  - python manage.py runserver
 
 
 USUARIOS OCUPADOS
