@@ -16,10 +16,10 @@ Iniciar el servidor
 
 
 USUARIOS OCUPADOS
-Para probar el registro de nuevos usuarios, no utilizar los siguientes clientes, ya que fueron usados durante el desarrollo.
+Para probar el registro de nuevos usuarios, no utilizar los siguientes clientes, ya que fueron usados durante el desarrollo.<br>
 customer_id = 5, 6, 13, 21, 24, 40
 
-EMPLEADOS OCUPADOS
+EMPLEADOS OCUPADOS<br>
 employee_id = 1, 2, 3, 4, 7
 
 
